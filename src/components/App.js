@@ -1,11 +1,14 @@
 import React from 'react';
+import { Display } from './Display';
+import { ButtonPanel } from './ButtonPanel';
 
 export class App extends React.Component {
-  constructor(props) {
-    super(props)
-  }
-
   render() {
-    return
+    return (
+      <div>
+        <Display />
+        <ButtonPanel />
+      </div>
+    )
   }
 }
