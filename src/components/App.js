@@ -6,6 +6,6 @@ const App = () =>
   <div>
     <Display />
     <ButtonPanel />
-  </div>
+  </div>;
 
 export default App;
