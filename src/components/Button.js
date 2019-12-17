@@ -2,11 +2,11 @@ import React from 'react';
 import PropTypes from 'prop-types';
 
 const Button = props =>
-  <div>
+  (<div>
     <button type="button">
       {props.name}
     </button>
-  </div>
+  </div>);
 
 Button.propTypes = {
   name: PropTypes.string.isRequired

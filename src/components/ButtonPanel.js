@@ -3,7 +3,7 @@ import '../index.css';
 import Button from './Button';
 
 const ButtonPanel = () =>
-  <div>
+  (<div>
     <div>
       <Button name="AC" />
       <Button name="+/-" />
@@ -33,6 +33,6 @@ const ButtonPanel = () =>
       <Button name="." />
       <Button name="=" />
     </div>
-  </div>
+  </div>);
 
 export default ButtonPanel;

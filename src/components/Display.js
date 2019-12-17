@@ -2,11 +2,11 @@ import React from 'react';
 import PropTypes from 'prop-types';
 
 const Display = props =>
-  <div>
+  (<div>
     <div>
       {props.result}
     </div>
-  </div>
+  </div>);
 
 Display.propTypes = {
   result: PropTypes.string.isRequired

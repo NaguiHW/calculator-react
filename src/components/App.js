@@ -3,9 +3,9 @@ import Display from './Display';
 import ButtonPanel from './ButtonPanel';
 
 const App = () =>
-  <div>
+  (<div>
     <Display />
     <ButtonPanel />
-  </div>;
+  </div>);
 
 export default App;
