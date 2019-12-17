@@ -5,7 +5,7 @@ export class Display extends React.Component {
   render() {
     return (
       <div>
-        <div>this.props.result</div>
+        <div>{this.props.result}</div>
       </div>
     )
   }
