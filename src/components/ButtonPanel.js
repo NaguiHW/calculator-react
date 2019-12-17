@@ -1,8 +1,8 @@
 import React from 'react';
 import '../index.css';
-import { Button } from './Button'
+import Button from './Button';
 
-export class ButtonPanel extends React.Component {
+class ButtonPanel extends React.Component {
   render() {
     return (
       <div>
@@ -38,4 +38,6 @@ export class ButtonPanel extends React.Component {
       </div>
     )
   }
-}
+};
+
+export default ButtonPanel;

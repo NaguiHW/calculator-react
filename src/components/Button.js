@@ -1,7 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 
-export class Button extends React.Component {
+class Button extends React.Component {
   render() {
     return (
       <div>
@@ -9,8 +9,10 @@ export class Button extends React.Component {
       </div>
     )
   }
-}
+};
 
 Button.propTypes = {
   name: PropTypes.string.isRequired
 };
+
+export default Button;

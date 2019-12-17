@@ -1,7 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 
-export class Display extends React.Component {
+class Display extends React.Component {
   render() {
     return (
       <div>
@@ -9,12 +9,14 @@ export class Display extends React.Component {
       </div>
     )
   }
-}
+};
 
 Display.propTypes = {
   result: PropTypes.string.isRequired
-}
+};
 
 Display.defaultProps = {
   result: '0'
-}
+};
+
+export default Display;
