@@ -8,7 +8,7 @@ const App = () => {
       <Display />
       <ButtonPanel />
     </div>
-  )
+  );
 };
 
 export default App;
