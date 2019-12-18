@@ -19,16 +19,15 @@
   padding: 10px;
 }
 
-button:nth-child(4), .row5 button:nth-child(3) {
-  background-color: orange;
-}
-
 button {
-  width: 25%;
   height: 100px;
   font-size: 30px;
 }
 
-.row5 button:nth-child(1) {
+.normal {
+  width: 25%;
+}
+
+.wide {
   width: 50%;
 }
