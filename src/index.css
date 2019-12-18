@@ -8,3 +8,13 @@
   width: 700px;
   margin: 0 auto;
 }
+
+.display {
+  background-color: gray;
+  font-weight: bold;
+  color: white;
+  height: 100px;
+  text-align: right;
+  font-size: 80px;
+  padding: 10px;
+}
