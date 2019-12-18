@@ -1,4 +1,4 @@
-import operate from './operate'
+import operate from './operate';
 
 const calculate = (obj, buttonName) => {
   const objData = obj;
@@ -30,9 +30,9 @@ const calculate = (obj, buttonName) => {
     objData.operation = null;
   } else if (buttonName === '+/-') {
     if (objData.next != null) {
-      objData.next = objData.next * -1;
+      objData.next *= -1;
     } else if (objData.total != null) {
-      objData.total = objData.total * -1;
+      objData.total *= -1;
     }
   } else if (buttonName === '.') {
     if (objData.total != null && objData.operation != null && objData.next != null) {

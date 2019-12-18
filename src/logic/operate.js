@@ -1,20 +1,23 @@
+// eslint-disable-next-line
 import Big from 'big.js';
 
 const operate = (numberOne, numberTwo, operation) => {
-  let n1 = Big(numberOne);
-  let n2 = Big(numberTwo);
-  if (operation === '+') { 
-    return n1 + n2
+  const n1 = Big(numberOne);
+  const n2 = Big(numberTwo);
+  let total;
+  if (operation === '+') {
+    total = n1 + n2;
   };
   if (operation === '-') {
-    return n1 - n2
+    total = n1 - n2;
   };
   if (operation === 'X') {
-    return n1 * n2
+    total = n1 * n2;
   };
   if (operation === '/') {
-    return n1 / n2
+    total = n1 / n2;
   };
+  return total;
 };
 
 export default operate;
