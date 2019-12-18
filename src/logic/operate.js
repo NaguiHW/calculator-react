@@ -7,16 +7,16 @@ const operate = (numberOne, numberTwo, operation) => {
   let total;
   if (operation === '+') {
     total = n1 + n2;
-  };
+  }
   if (operation === '-') {
     total = n1 - n2;
-  };
+  }
   if (operation === 'X') {
     total = n1 * n2;
-  };
+  }
   if (operation === '/') {
     total = n1 / n2;
-  };
+  }
   return total;
 };
 
