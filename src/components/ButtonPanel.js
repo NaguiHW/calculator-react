@@ -4,33 +4,33 @@ import Button from './Button';
 
 const ButtonPanel = () => (
   <div>
-    <div>
-      <Button name="AC" />
-      <Button name="+/-" />
-      <Button name="%" />
+    <div className="row1">
+      <Button name="AC" color="lightgray" />
+      <Button name="+/-" color="lightgray" />
+      <Button name="%" color="lightgray" />
       <Button name="/" />
     </div>
-    <div>
-      <Button name="7" />
-      <Button name="8" />
-      <Button name="9" />
+    <div className="row2">
+      <Button name="7" color="lightgray" />
+      <Button name="8" color="lightgray" />
+      <Button name="9" color="lightgray" />
       <Button name="X" />
     </div>
-    <div>
-      <Button name="4" />
-      <Button name="5" />
-      <Button name="6" />
+    <div className="row3">
+      <Button name="4" color="lightgray" />
+      <Button name="5" color="lightgray" />
+      <Button name="6" color="lightgray" />
       <Button name="-" />
     </div>
-    <div>
-      <Button name="1" />
-      <Button name="2" />
-      <Button name="3" />
+    <div className="row4">
+      <Button name="1" color="lightgray" />
+      <Button name="2" color="lightgray" />
+      <Button name="3" color="lightgray" />
       <Button name="+" />
     </div>
-    <div>
-      <Button name="0" />
-      <Button name="." />
+    <div className="row5">
+      <Button name="0" color="lightgray" wide />
+      <Button name="." color="lightgray" />
       <Button name="=" />
     </div>
   </div>
