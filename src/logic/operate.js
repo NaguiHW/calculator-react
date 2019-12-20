@@ -2,24 +2,20 @@
 import Big from 'big.js';
 
 const operate = (numberOne, numberTwo, operation) => {
-  const n1 = Big(parseFloat(numberOne));
-  const n2 = Big(parseFloat(numberTwo));
+  const n1 = Big(numberOne);
+  const n2 = Big(numberTwo);
   let total;
   if (operation === '+') {
-    total = Big(parseFloat(numberOne)) + Big(parseFloat(numberTwo));
-    console.log(n1)
-    console.log(n2)
+    total = n1.plus(n2)
   }
   if (operation === '-') {
-    total = n1 - n2;
-    console.log(n1)
-    console.log(n2)
+    total = n1.minus(n2);
   }
   if (operation === 'X') {
-    total = n1 * n2;
+    total = n1.times(n2);
   }
   if (operation === '/') {
-    total = n1 / n2;
+    total = n1.div(n2);
   }
   return total;
 };
