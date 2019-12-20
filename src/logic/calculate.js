@@ -1,57 +1,58 @@
 import operate from './operate';
 
 const calculate = (obj, buttonName) => {
-  const objData = obj;
-  const NUMBERS = [0, 1, 2, 3, 4, 5, 6, 7, 8, 9];
-  const OPERATIONS = ['%', '/', 'X', '-', '+'];
-  if (objData.total === 'Error') {
-    objData.total = null;
-  } else if (OPERATIONS.includes(buttonName)) {
-    if (objData.total && !objData.operation) {
-      objData.operation = buttonName;
-    } else if (objData.total && objData.operation && objData.next) {
-      objData.total = operate(objData.total, objData.next, objData.operation);
-      objData.next = null;
-      objData.operation = buttonName;
-    }
-  } else if (NUMBERS.includes(buttonName)) {
-    if (objData.total && objData.operation && !objData.next) {
-      objData.next = buttonName;
-    } else if (objData.total && objData.operation && objData.next) {
-      objData.next += buttonName;
-    } else if (objData.total != null) {
-      objData.total += buttonName;
-    } else {
-      objData.total = buttonName;
-    }
-  } else if (buttonName === 'AC') {
-    objData.total = null;
-    objData.next = null;
-    objData.operation = null;
-  } else if (buttonName === '+/-') {
-    if (objData.next != null) {
-      objData.next *= -1;
-    } else if (objData.total != null) {
-      objData.total *= -1;
-    }
-  } else if (buttonName === '.') {
-    if (objData.total != null && objData.operation != null && objData.next != null) {
-      if (!/\./.test(objData.next)) {
-        objData.next += buttonName;
-      }
-    } else if (objData.total != null && objData.operation === null && objData.next === null) {
-      if (!/\./.test(objData.total)) {
-        objData.total += buttonName;
-      }
-    }
-  } else if (buttonName === '=') {
-    if (objData.total != null && objData.operation != null && objData.next != null) {
-      objData.total = operate(objData.total, objData.next, objData.operation);
-      objData.next = null;
-      objData.operation = null;
-    }
-  }
-  return objData;
+  let {total, next, operation} = obj;
+  console.log(total);
+  console.log(next);
+  console.log(operation);
+  // if (total === 'Error') {
+  //   total = null;
+  // } else if (buttonName === '+/-') {
+  //   if (next != null) {
+  //     next = (parseFloat(next) * -1).toString();
+  //   } else if (total != null) {
+  //     total = (parseFloat(total) * -1).toString();
+  //   }
+  // } else if (/[%÷X\-+]/.test(buttonName)) {
+  //   if (total && !operation) {
+  //     operation = buttonName;
+  //   } else if (total && operation && next) {
+  //     total = operate(total, next, operation);
+  //     next = null;
+  //     operation = buttonName;
+  //   }
+  // } else if (/[0123456789]/.test(buttonName)) {
+  //   if (total && operation && !next) {
+  //     next = buttonName;
+  //   } else if (total && operation && next) {
+  //     next += buttonName;
+  //   } else if (total != null) {
+  //     total += buttonName;
+  //   } else {
+  //     total = buttonName;
+  //   }
+  // } else if (buttonName === 'AC') {
+  //   total = null;
+  //   next = null;
+  //   operation = null;
+  // } else if (buttonName === '.') {
+  //   if (total != null && operation != null && next != null) {
+  //     if (!/\./.test(next)) {
+  //       next += buttonName;
+  //     }
+  //   } else if (total != null && operation === null && next === null) {
+  //     if (!/\./.test(total)) {
+  //       total += buttonName;
+  //     }
+  //   }
+  // } else if (buttonName === '=') {
+  //   if (total != null && operation != null && next != null) {
+  //     total = operate(total, next, operation).toString();
+  //     next = null;
+  //     operation = null;
+  //   }
+  // }
+  // return {total, next, operation};
 };
 
 export default calculate;
