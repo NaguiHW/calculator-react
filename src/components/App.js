@@ -10,13 +10,14 @@ class App extends React.Component {
     this.state = {
       total: null,
       next: null,
+      // eslint-disable-next-line
       operation: null,
     };
     this.handleClick = this.handleClick.bind(this);
   }
 
   handleClick(buttonName) {
-    this.setState(state => calculate(state, buttonName));
+    this.setState((state) => calculate(state, buttonName));
   }
 
   render() {
@@ -29,6 +30,6 @@ class App extends React.Component {
       </div>
     );
   }
-};
+}
 
 export default App;

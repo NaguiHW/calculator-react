@@ -6,7 +6,7 @@ const operate = (numberOne, numberTwo, operation) => {
   const n2 = Big(numberTwo);
   let total;
   if (operation === '+') {
-    total = n1.plus(n2)
+    total = n1.plus(n2);
   }
   if (operation === '-') {
     total = n1.minus(n2);
@@ -16,7 +16,7 @@ const operate = (numberOne, numberTwo, operation) => {
   }
   if (operation === '/') {
     if (numberTwo === 0) {
-      total = 'ERROR'
+      total = 'ERROR';
     } else {
       total = n1.div(n2);
     }

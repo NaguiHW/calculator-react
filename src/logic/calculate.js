@@ -2,8 +2,8 @@ import operate from './operate';
 
 const calculate = (obj, buttonName) => {
   const NUMBERS = '0123456789.';
-  const OPERATIONS = ['+', '-', 'X', '/']
-  let {total, next, operation} = obj;
+  const OPERATIONS = ['+', '-', 'X', '/'];
+  let { total, next, operation } = obj;
 
   if (buttonName === 'AC') {
     total = null;
@@ -20,7 +20,7 @@ const calculate = (obj, buttonName) => {
   }
 
   if (buttonName === '+/-') {
-    if(total) {
+    if (total) {
       if (!next) {
         total *= -1;
         total = total.toString();
@@ -32,7 +32,7 @@ const calculate = (obj, buttonName) => {
   }
 
   if (buttonName === '%') {
-    if(total) {
+    if (total) {
       if (!next) {
         total /= 100;
         total = total.toString();
@@ -51,20 +51,19 @@ const calculate = (obj, buttonName) => {
 
   if (NUMBERS.includes(buttonName)) {
     if (!total) {
-      if(buttonName === '.') {
+      if (buttonName === '.') {
         total = '0.';
       } else {
         total = buttonName;
       }
-    }else if (total) {
+    } else if (total) {
       if (!operation) {
         if (total.includes('.') && buttonName === '.') {
-          return
-        } else {
-          total += buttonName;
+          return;
         }
+        total += buttonName;
       } else if (operation === '=' && !next) {
-        if(buttonName === '.') {
+        if (buttonName === '.') {
           total = '0.';
         } else {
           total = buttonName;
@@ -72,17 +71,16 @@ const calculate = (obj, buttonName) => {
         operation = null;
       } else if (OPERATIONS.includes(operation)) {
         if (!next) {
-          if(buttonName === '.') {
+          if (buttonName === '.') {
             next = '0.';
           } else {
             next = buttonName;
           }
         } else if (next) {
           if (next.includes('.') && buttonName === '.') {
-            return
-          } else {
-            next += buttonName;
+            return;
           }
+          next += buttonName;
         }
       }
     }
@@ -93,11 +91,11 @@ const calculate = (obj, buttonName) => {
       operation = buttonName;
     } else if (operation && next) {
       total = operate(parseFloat(total), parseFloat(next), operation);
-      next = null
+      next = null;
       operation = buttonName;
     }
   }
-  return {total, next, operation}
+  return { total, next, operation };
 };
 
 export default calculate;

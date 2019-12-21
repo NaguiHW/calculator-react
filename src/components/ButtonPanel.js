@@ -45,7 +45,7 @@ class ButtonPanel extends React.Component {
           <Button name="=" clickHandler={this.handleClick} />
         </div>
       </div>
-    )
+    );
   }
 }
 
