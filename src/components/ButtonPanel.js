@@ -48,9 +48,6 @@ const ButtonPanel = (props) => {
 };
 
 ButtonPanel.propTypes = {
-  name: PropTypes.string.isRequired,
-  color: PropTypes.string,
-  wide: PropTypes.bool,
   clickHandler: PropTypes.func.isRequired,
 };
 
