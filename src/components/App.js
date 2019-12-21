@@ -5,7 +5,7 @@ import '../index.css';
 // eslint-disable-next-line
 import calculate from '../logic/calculate';
 
-class App extends React.Component {
+const App = class extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
@@ -17,18 +17,18 @@ class App extends React.Component {
   }
 
   handleClick(buttonName) {
-    this.setState(state => calculate(state, buttonName))
+    this.setState(state => calculate(state, buttonName));
   }
 
   render() {
     const toDisplay = this.state.next ? this.state.next : this.state.total;
     return (
       <div className="container">
-        <Display display={toDisplay}/>
-        <ButtonPanel clickHandler={this.handleClick}/>
+        <Display display={toDisplay} />
+        <ButtonPanel clickHandler={this.handleClick} />
       </div>
-    )
+    );
   }
-};
+}
 
 export default App;
