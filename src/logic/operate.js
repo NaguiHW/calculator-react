@@ -17,7 +17,7 @@ const operate = (numberOne, numberTwo, operation) => {
   if (operation === '/') {
     total = n1.div(n2);
   }
-  return total;
+  return total.toString();
 };
 
 export default operate;

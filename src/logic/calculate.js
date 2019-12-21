@@ -16,27 +16,80 @@ const calculate = (obj, buttonName) => {
       total = operate(parseFloat(total), parseFloat(next), operation);
       next = null;
       operation = buttonName;
-    } else {
-      return
+    }
+  }
+
+  if (buttonName === '+/-') {
+    if(total) {
+      if (!next) {
+        total *= -1;
+        total = total.toString();
+      } else if (next) {
+        next *= -1;
+        next = next.toString();
+      }
+    }
+  }
+
+  if (buttonName === '%') {
+    if(total) {
+      if (!next) {
+        total /= 100;
+        total = total.toString();
+      } else if (next) {
+        if (operation === '+' || operation === '-') {
+          next = total * (next / 100);
+        } else if (operation === 'X' || operation === '/') {
+          next /= 100;
+        }
+        total = operate(total, next, operation);
+        next = null;
+        operation = null;
+      }
     }
   }
 
   if (NUMBERS.includes(buttonName)) {
     if (!total) {
-      total = buttonName
-    }
-    if (total) {
-      if (!operation) {
-        total += buttonName
+      if(buttonName === '.') {
+        total = '0.';
+      } else {
+        total = buttonName;
       }
-      if (operation === '=' && !next) {
-        total = buttonName
+    }else if (total) {
+      if (!operation) {
+        if (total.includes('.') && buttonName === '.') {
+          return
+        } else {
+          total += buttonName;
+        }
+      } else if (operation === '=' && !next) {
+        if(buttonName === '.') {
+          total = '0.';
+        } else {
+          total = buttonName;
+        }
+        operation = null;
+      } else if (OPERATIONS.includes(operation)) {
+        if (!next) {
+          if(buttonName === '.') {
+            next = '0.';
+          } else {
+            next = buttonName;
+          }
+        } else if (next) {
+          if (next.includes('.') && buttonName === '.') {
+            return
+          } else {
+            next += buttonName;
+          }
+        }
       }
     }
   }
 
   if (OPERATIONS.includes(buttonName)) {
-    if (!operation) {
+    if (!operation || (operation === '=' && !next)) {
       operation = buttonName;
     } else if (operation && next) {
       total = operate(parseFloat(total), parseFloat(next), operation);
@@ -44,64 +97,7 @@ const calculate = (obj, buttonName) => {
       operation = buttonName;
     }
   }
-  if (total) {
-    total = total.toString();
-  }
-  if (next) {
-    next = next.toString();
-  }
-  console.log(total)
-  console.log(next)
-  console.log(operation)
   return {total, next, operation}
-  // if (total === 'Error') {
-  //   total = null;
-  // } else if (buttonName === '+/-') {
-  //   if (next != null) {
-  //     next = (parseFloat(next) * -1).toString();
-  //   } else if (total != null) {
-  //     total = (parseFloat(total) * -1).toString();
-  //   }
-  // } else if (/[%÷X\-+]/.test(buttonName)) {
-  //   if (total && !operation) {
-  //     operation = buttonName;
-  //   } else if (total && operation && next) {
-  //     total = operate(total, next, operation);
-  //     next = null;
-  //     operation = buttonName;
-  //   }
-  // } else if (/[0123456789]/.test(buttonName)) {
-  //   if (total && operation && !next) {
-  //     next = buttonName;
-  //   } else if (total && operation && next) {
-  //     next += buttonName;
-  //   } else if (total != null) {
-  //     total += buttonName;
-  //   } else {
-  //     total = buttonName;
-  //   }
-  // } else if (buttonName === 'AC') {
-  //   total = null;
-  //   next = null;
-  //   operation = null;
-  // } else if (buttonName === '.') {
-  //   if (total != null && operation != null && next != null) {
-  //     if (!/\./.test(next)) {
-  //       next += buttonName;
-  //     }
-  //   } else if (total != null && operation === null && next === null) {
-  //     if (!/\./.test(total)) {
-  //       total += buttonName;
-  //     }
-  //   }
-  // } else if (buttonName === '=') {
-  //   if (total != null && operation != null && next != null) {
-  //     total = operate(total, next, operation).toString();
-  //     next = null;
-  //     operation = null;
-  //   }
-  // }
-  // return {total, next, operation};
 };
 
 export default calculate;
