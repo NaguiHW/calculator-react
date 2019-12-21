@@ -15,7 +15,11 @@ const operate = (numberOne, numberTwo, operation) => {
     total = n1.times(n2);
   }
   if (operation === '/') {
-    total = n1.div(n2);
+    if (numberTwo === 0) {
+      total = 'ERROR'
+    } else {
+      total = n1.div(n2);
+    }
   }
   return total.toString();
 };

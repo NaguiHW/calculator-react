@@ -1,7 +1,10 @@
+@import url('https://fonts.googleapis.com/css?family=Kelly+Slab&display=swap');
+
 * {
   box-sizing: border-box;
   margin: 0;
   padding: 0;
+  font-family: 'Kelly Slab', cursive;
 }
 
 .container {
