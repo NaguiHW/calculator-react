@@ -1,23 +1,22 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 
-class Button extends React.Component {
-  constructor(props) {
-    super(props);
-    this.handleClick = this.handleClick.bind(this);
-  }
+const Button = (props) => {
+  const {
+    name,
+    color,
+    wide,
+  } = props;
 
-  handleClick = () => {
-    this.props.clickHandler(this.props.name);
+  const handleClick = () => {
+    props.clickHandler(name);
   };
 
-  render() {
-    return (
-      <div style={{ background: this.props.color }} className={this.props.wide ? 'wide' : 'normal'} onClick={this.handleClick}>
-        {this.props.name}
-      </div>
-    );
-  }
+  return (
+    <div style={{ background: color }} className={wide ? 'wide' : 'normal'} onClick={handleClick}>
+      {name}
+    </div>
+  );
 }
 
 Button.propTypes = {
