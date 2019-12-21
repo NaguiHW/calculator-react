@@ -1,5 +1,6 @@
 import React from 'react';
 import '../index.css';
+import PropTypes from 'prop-types';
 import Button from './Button';
 
 const ButtonPanel = (props) => {
@@ -7,7 +8,7 @@ const ButtonPanel = (props) => {
     clickHandler,
   } = props;
 
-  const handleClick = buttonName => {
+  const handleClick = (buttonName) => {
     clickHandler(buttonName);
   };
 
@@ -44,6 +45,13 @@ const ButtonPanel = (props) => {
       </div>
     </div>
   );
+};
+
+ButtonPanel.propTypes = {
+  name: PropTypes.string.isRequired,
+  color: PropTypes.string,
+  wide: PropTypes.bool,
+  clickHandler: PropTypes.func.isRequired,
 };
 
 export default ButtonPanel;

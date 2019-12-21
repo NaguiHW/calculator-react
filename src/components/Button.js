@@ -11,8 +11,7 @@ const Button = (props) => {
   };
 
   return (
-    // eslint-disable-next-line jsx-a11y/click-events-have-key-events
-    // eslint-disable-next-line jsx-a11y/no-static-element-interactions
+    // eslint-disable-next-line
     <div style={{ background: color }} className={wide ? 'wide' : 'normal'} onClick={handleClick}>
       {name}
     </div>
