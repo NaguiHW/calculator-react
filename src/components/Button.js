@@ -7,9 +7,9 @@ class Button extends React.Component {
     this.handleClick = this.handleClick.bind(this);
   }
 
-  handleClick() {
+  handleClick = () => {
     this.props.clickHandler(this.props.name);
-  }
+  };
 
   render() {
     return (
@@ -24,7 +24,7 @@ Button.propTypes = {
   name: PropTypes.string.isRequired,
   color: PropTypes.string,
   wide: PropTypes.bool,
-  handleClick: PropTypes.func,
+  clickHandler: PropTypes.func,
 };
 
 Button.defaultProps = {
