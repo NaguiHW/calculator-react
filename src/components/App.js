@@ -2,10 +2,9 @@ import React from 'react';
 import Display from './Display';
 import ButtonPanel from './ButtonPanel';
 import '../index.css';
-// eslint-disable-next-line
 import calculate from '../logic/calculate';
 
-const App = class extends React.Component {
+class App extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
@@ -21,6 +20,7 @@ const App = class extends React.Component {
   }
 
   render() {
+    // eslint-disable-next-line
     const toDisplay = this.state.next ? this.state.next : this.state.total;
     return (
       <div className="container">
@@ -29,6 +29,6 @@ const App = class extends React.Component {
       </div>
     );
   }
-}
+};
 
 export default App;
