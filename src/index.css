@@ -1,7 +1,10 @@
+@import url('https://fonts.googleapis.com/css?family=Kelly+Slab&display=swap');
+
 * {
   box-sizing: border-box;
   margin: 0;
   padding: 0;
+  font-family: 'Kelly Slab', cursive;
 }
 
 .container {
@@ -19,15 +22,28 @@
   padding: 10px;
 }
 
-button {
-  height: 100px;
-  font-size: 30px;
+.row1, .row2, .row3, .row4, .row5 {
+  display: flex;
 }
 
 .normal {
   width: 25%;
+  height: 100px;
+  font-size: 30px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border: 1px solid black;
+  cursor: pointer;
 }
 
 .wide {
   width: 50%;
+  height: 100px;
+  font-size: 30px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border: 1px solid black;
+  cursor: pointer;
 }

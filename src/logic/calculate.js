@@ -1,57 +1,102 @@
 import operate from './operate';
 
 const calculate = (obj, buttonName) => {
-  const objData = obj;
-  const NUMBERS = [0, 1, 2, 3, 4, 5, 6, 7, 8, 9];
-  const OPERATIONS = ['%', '/', 'X', '-', '+'];
-  if (objData.total === 'Error') {
-    objData.total = null;
-  } else if (OPERATIONS.includes(buttonName)) {
-    if (objData.total && !objData.operation) {
-      objData.operation = buttonName;
-    } else if (objData.total && objData.operation && objData.next) {
-      objData.total = operate(objData.total, objData.next, objData.operation);
-      objData.next = null;
-      objData.operation = buttonName;
-    }
-  } else if (NUMBERS.includes(buttonName)) {
-    if (objData.total && objData.operation && !objData.next) {
-      objData.next = buttonName;
-    } else if (objData.total && objData.operation && objData.next) {
-      objData.next += buttonName;
-    } else if (objData.total != null) {
-      objData.total += buttonName;
-    } else {
-      objData.total = buttonName;
-    }
-  } else if (buttonName === 'AC') {
-    objData.total = null;
-    objData.next = null;
-    objData.operation = null;
-  } else if (buttonName === '+/-') {
-    if (objData.next != null) {
-      objData.next *= -1;
-    } else if (objData.total != null) {
-      objData.total *= -1;
-    }
-  } else if (buttonName === '.') {
-    if (objData.total != null && objData.operation != null && objData.next != null) {
-      if (!/\./.test(objData.next)) {
-        objData.next += buttonName;
-      }
-    } else if (objData.total != null && objData.operation === null && objData.next === null) {
-      if (!/\./.test(objData.total)) {
-        objData.total += buttonName;
-      }
-    }
-  } else if (buttonName === '=') {
-    if (objData.total != null && objData.operation != null && objData.next != null) {
-      objData.total = operate(objData.total, objData.next, objData.operation);
-      objData.next = null;
-      objData.operation = null;
+  const NUMBERS = '0123456789.';
+  const OPERATIONS = ['+', '-', 'X', '/'];
+  let { total, next, operation } = obj;
+
+  if (buttonName === 'AC') {
+    total = null;
+    next = null;
+    operation = null;
+  }
+
+  if (buttonName === '=') {
+    if (next) {
+      total = operate(parseFloat(total), parseFloat(next), operation);
+      next = null;
+      operation = buttonName;
     }
   }
-  return objData;
+
+  if (buttonName === '+/-') {
+    if (total) {
+      if (!next) {
+        total *= -1;
+        total = total.toString();
+      } else if (next) {
+        next *= -1;
+        next = next.toString();
+      }
+    }
+  }
+
+  if (buttonName === '%') {
+    if (total) {
+      if (!next) {
+        total /= 100;
+        total = total.toString();
+      } else if (next) {
+        if (operation === '+' || operation === '-') {
+          next = total * (next / 100);
+        } else if (operation === 'X' || operation === '/') {
+          next /= 100;
+        }
+        total = operate(total, next, operation);
+        next = null;
+        operation = null;
+      }
+    }
+  }
+
+  if (NUMBERS.includes(buttonName)) {
+    if (!total) {
+      if (buttonName === '.') {
+        total = '0.';
+      } else {
+        total = buttonName;
+      }
+    } else if (total) {
+      if (!operation) {
+        if (total.includes('.') && buttonName === '.') {
+          return;
+        }
+        total += buttonName;
+      } else if (operation === '=' && !next) {
+        if (buttonName === '.') {
+          total = '0.';
+        } else {
+          total = buttonName;
+        }
+        operation = null;
+      } else if (OPERATIONS.includes(operation)) {
+        if (!next) {
+          if (buttonName === '.') {
+            next = '0.';
+          } else {
+            next = buttonName;
+          }
+        } else if (next) {
+          if (next.includes('.') && buttonName === '.') {
+            return;
+          }
+          next += buttonName;
+        }
+      }
+    }
+  }
+
+  if (OPERATIONS.includes(buttonName)) {
+    if (!operation || (operation === '=' && !next)) {
+      operation = buttonName;
+    } else if (operation && next) {
+      total = operate(parseFloat(total), parseFloat(next), operation);
+      next = null;
+      operation = buttonName;
+    }
+  }
+  // eslint-disable-next-line
+  return { total, next, operation };
 };
 
 export default calculate;
